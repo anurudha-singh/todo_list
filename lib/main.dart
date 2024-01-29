@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_list/provider/todo_provider.dart';
 import 'package:todo_list/screens/bottom_nav_bar.dart';
+import 'package:todo_list/screens/todolist.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(Provider(
+      create: (BuildContext context) => ToDoListProvider(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

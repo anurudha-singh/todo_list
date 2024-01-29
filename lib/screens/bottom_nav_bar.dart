@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/screens/addItems.dart';
+import 'package:todo_list/screens/todolist.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -26,8 +28,25 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.blue,
         title: Text('Nav bar example'),
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255, 122, 161, 167)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => AddItemsInsideToDoList()),
+              );
+            },
+            child: Text('To Add TODO'),
+          )
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
