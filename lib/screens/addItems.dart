@@ -24,50 +24,48 @@ class _AddItemsInsideToDoListState extends State<AddItemsInsideToDoList> {
       ),
       body: Consumer<ToDoListProvider>(
         builder:
-            (BuildContext context, ToDoListProvider provider, Widget? child) {
-          SingleChildScrollView(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              const SizedBox(
-                height: 100,
-              ),
-              Card(
-                  child: TextField(
-                controller: _titleController,
-              )),
-              const SizedBox(
-                height: 50,
-              ),
-              Card(
-                  child: TextField(
-                controller: _descriptionController,
-              )),
-              const SizedBox(
-                height: 100,
-              ),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 137, 67, 23)),
-                  onPressed: SaveDataToModel(
-                      _titleController.text, _descriptionController.text),
-                  child: const Text('Add Tasks')),
-              const SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
+            (BuildContext context, ToDoListProvider provider, Widget? child) =>
+                SingleChildScrollView(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            const SizedBox(
+              height: 100,
+            ),
+            Card(
+                child: TextField(
+              controller: _titleController,
+            )),
+            const SizedBox(
+              height: 50,
+            ),
+            Card(
+                child: TextField(
+              controller: _descriptionController,
+            )),
+            const SizedBox(
+              height: 100,
+            ),
+            ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 122, 161, 167)),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => TodoListApp()),
-                  );
-                },
-                child: Text('View TODO'),
-              )
-            ]),
-          );
-        },
+                    backgroundColor: Color.fromARGB(255, 137, 67, 23)),
+                onPressed: provider.SaveDataToModel(
+                    _titleController.text, _descriptionController.text),
+                child: const Text('Add Tasks')),
+            const SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 122, 161, 167)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TodoListApp()),
+                );
+              },
+              child: Text('View TODO'),
+            )
+          ]),
+        ),
       ),
     );
   }
